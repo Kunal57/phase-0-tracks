@@ -1,0 +1,90 @@
+~ Elevator Algorithm ~
+
+UNTIL elevator is within reach
+	-Move within elevator range
+
+WHILE elevator doors are closed
+	-Press elevator button
+
+IF elevator doors are open
+	-Move inside elevator
+ELSE
+	-Wait for elevator doors to open
+
+Assign each floor to a corresponding task.
+	-Floor 1 = Mail
+	-Floor 2 = Janitorial Services
+	-Floor 3 = Packaging
+	-Floor 4 = Food
+	-Floor 5 = Rocket Science
+	-Floor 6 = HQ
+
+IF the mail needs to be retrieved
+	-Press the Floor 1 button
+ELSIF the vacuum needs to be retrieved
+	-Press the Floor 2 button
+ELSIF a package needs to be shipped
+	-Press the Floor 3 button
+ELSIF food needs to be brought
+	-Press the Floor 4 button
+ELSIF a rocket needs to be made
+	-Press the Floor 5 button
+ELSE
+	-Return to HQ
+
+UNTIL the elevator stops at the correct floor
+	-Stay standing in the elevator
+
+IF the elevator doors open on the correct floor
+	-Exit the elevator
+ELSE
+	-Wait inside the elevator
+
+_____________________________________________________________
+~ Brushing ~
+
+Bathroom coordinates = 100, 200
+Bedroom coordinates = 200, 100
+
+-Gather toiletries and walk towards Bathroom coordinates
+
+IF bathroom door is closed
+	-Open door
+ELSE
+	-Walk into bathroom
+
+WHILE toiletries bag is closed
+	-Open bag
+ELSE
+	-Pull out toothbrush and toothpaste
+
+IF toothpaste is capped
+	-Uncap toothpaste and squeeze a dime onto toothbrush
+ELSE
+	-squeeze a dime of toothpaste on the toothbrush
+
+-Put toothbrush in mouth
+
+UNTIL all teeth are brushed
+	IF tooth not brushed
+		-brush tooth on all sides
+	ELSE 
+		-move onto next tooth
+
+IF bathroom sink is off
+	-Turn to warm
+ELSE 
+	-Turn to warm
+
+UNTIL toothbrush is clean
+	-Rinse toothbrush under using the warm water
+
+UNTIL mouth is clean
+	-Rinse mouth using the warm water
+
+-Turn off sink water
+
+-WHILE toothpaste & toothbrush are open
+	-Cap and put back into toiletries bag
+
+-Grab toiletries bag and move to Bedroom coordinates
