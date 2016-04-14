@@ -34,24 +34,25 @@ Steps:
 
 =end
 
-# Initial Solution
-
 def encrypt(string)
 	counter = 0
 	while counter < string.length
-		string[counter] = string[counter].next
+		if string[counter] == "z"
+			string[counter] = "a"
+		else
+			string[counter] = string[counter].next
+		end
 		counter += 1
 	end
 	return string
 end
 
-
 def decrypt(string)
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
 	counter = 0
 	while counter < string.length
-		letter = alphabet.index(string[counter])
-		string[counter] = alphabet[letter - 1]
+		letter_num = alphabet.index(string[counter])
+		string[counter] = alphabet[letter_num - 1]
 		counter += 1
 	end
 	return string
@@ -60,14 +61,14 @@ end
 
 # Release 3: Test Your Program
 
-# encrypt("abc") # "bcd"
-# encrypt("zed") # "afe"
-# decrypt("bcd") # "abc"
-# decrypt("afe") # "zed"
+encrypt("abc") # "bcd"
+encrypt("zed") # "afe"
+decrypt("bcd") # "abc"
+decrypt("afe") # "zed"
 
 # Release 4: Try a Nested Method Call
 
-# decrypt(encrypt("swordfish"))
+decrypt(encrypt("swordfish"))
 
 =begin
 This nested method call works because it evaluates
@@ -96,31 +97,17 @@ Steps:
 
 # DRIVER CODE
 
-puts "Would you like to encrypt a password or decrypt a password?"
-encrypt_or_decrypt = gets.chomp
+puts "\nWould you like to encrypt a password or decrypt a password?"
+answer = gets.chomp
 
-task_encrypt = false
-task_decrypt = false
-
-if encrypt_or_decrypt == "encrypt"
-	task_encrypt = true
-elsif encrypt_or_decrypt == "decrypt"
-	task_decrypt = true
-else
-	puts "Not a valid response."
-end
-
-if (task_encrypt == true || task_decrypt == true)
+if (answer == "encrypt" || answer == "decrypt")
 	puts "What is the password?"
 	password = gets.chomp
-	if task_encrypt == true
-		encrypted_password = encrypt(password)
-		puts "Your encrypted password is #{encrypted_password}!"
-	elsif task_decrypt == true
-		decrypted_password = decrypt(password)
-		puts "Your decrypted password is #{decrypted_password}!"
-	else
-		return "Not a valid response."
+	if answer == "encrypt"
+		puts "\nYour encrypted password is #{encrypt(password)}!"
+	else answer == "decrypt"
+		puts "\nYour decrypted password is #{decrypt(password)}!"
 	end
+else
+	puts "\nNot a valid response."
 end
-	
