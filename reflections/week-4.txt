@@ -1,0 +1,61 @@
+Variables
+
+1. A variable acts as a container to hold a value. The value can be an integer, string, boolean, etc. A programmer might want to use a variable for unknown values that the user provides. For example, due to the unexpected input from a user, the user input can be assigned to a variable and that variable can be used within the program to complete a set of instructions.
+
+2. In this line, the variable 'full_name' will be assigned the value that follows the equals sign. In this case, the variable is assigned to two separate variables. The line will first execute 'first_name' and retrieve the value of 'Abraham' from the assignment above. Then the line will add the 'last_name' to the first variable, designated by the + operator. The second variable 'last_name' will retrieve the value 'Lincoln' from above and add it to Abraham. The final result of the 'full_name' variable will be 'AbrahamLincoln'.
+
+Data Types
+
+3.
+
+string - A string is a value that contains characters within quotation marks. The characters can be anything as long as they are enclosed in quotation marks. An example of a potential use would be to get user input. A string would be needed to ask the user a question so that he could input his answer. The input from 'gets.chomp' would also be a string.
+
+integer - An integer is a whole number value. Integers could be utilized when dealing with mathematics within programs. An example would be when a developer needs to calculate the score of a game. He needs integers to be able to add a certain amount of points to the total score value.
+
+float - A float is similar to an integer but a float represents a integer with decimal places. Floats are very useful when there is a possibility of fractions. Instead of whole numbers leaving off certain fractional points, floats do a better job calculating those fractional points into the answer.
+
+nil - Nil is value to represent no value. Everything in ruby is an object so having no value returned is represented by nil. Nil is used when a user inputs nothing. Instead of returning 0 or any other numbers that can throw off the solution, nil conveys that no value was inputted. In an array with 3 values, the index[7] would return nil.
+
+booleans - Boolean values are true and false. They either convey that yes something is true or something is false. It's either 1 or 0. Booleans can be used when the return value of a method needs to be either yes or no. For example, if a developer needs to decide if the user is old enough to play a game, he can run a method that calculates the users age and instead of returning his age, returns true or false whether he's eligible to play the game.
+
+Algorithms
+
+4. An algorithm is simply a set of steps to solve a problem. 
+
+5. In computer science, two popular algorithms are the search & sort. 
+
+Methods
+
+6. A method is a ruby object that contains a block of code that is repeatable in different instances. A programmer would use a method to keep from repeating code and emphasizing the DRY principle. A method could also save the programmer a lot of time by writing fewer lines of code.
+
+7. 
+
+return value - The return value is the value returned at the end of execution of the method. It is a output that the method provides.
+
+side effect - A side effect modifies a variable outside the method in additional to returning a value.
+
+parameter - Parameters are the place holders placed after a method to designed the number of values that should be specified when calling the method.
+
+argument - Arguments are the actual values that replace the parameter place holders when the method is actually called.
+
+implicit return - Implicit return is the concept that the last line in a method is automatically evaluated and the results are returned. This differs from explicit return, in which the return value needs to be specified with additional code.
+
+8. Global scope is the range of visibility within a particular document. Global variables can be visible inside the whole document. This differs from method scope, as the range of visibility is restricted to within that method. Method variables are only visible inside that method and have no knowledge of variables outside the method. These scopes impact the availability of data throughout the program as a developer needs to know which variables he can access. A global variable can be accessed throughout the program and only needs to declare it once. A method variable is located inside the method and calling it outside the method wouldn't be useful. 
+
+Control Flow
+
+9. Control flow is when the program can result in different outputs depending on the input. A programmer would choose to use control flow to make the program more dynamic. The programmer can display different results based on the information the user provides by using control flow. For example, control flow can be used to output the letter grade of a student that inputs a number grade.
+
+10. 
+
+loop - a loop is statement that continually loops as long as the condition is true. There are many different loops in control flow such as while, until, and for.
+
+if - if is a statement that runs the block code following it if the condition is met
+
+else - else accompanies if and elsif statement providing an option if none of the if or elsif statements are met. It's basically like saying "if none of these conditions are met then run this block of code."
+
+elsif - an elsif statement basically adds the possibility of more outcomes and accompanies the if statement. It adds more 'branches' to the control flow depending on if the condition is met or not.
+
+while - as stated above, while is a type of loop that runs a code block only while the condition is true. As soon as the condition is false, the loop stops running.
+
+until - until is another type of loop similar to while that executes in the opposite way. Until loops the code block until a condition is met. Once the condition is met, the until loop stops executing the code. 
