@@ -43,7 +43,7 @@ answer = gets.chomp.to_sym
 if answer == :none
 elsif client.has_key?(answer)
 	puts "What is the new value of the key?"
-	if client[answer] == (client[:age] || client[:children])
+	if (client[answer] == client[:age]) || (client[answer] == client[:children])
 		client[answer] = gets.chomp.to_i
 	else
 		client[answer] = gets.chomp
