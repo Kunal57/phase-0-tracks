@@ -96,7 +96,7 @@ p ceo
 
 # Array
 
-numbers = [9,3,10,2,6,1,8,5,7,4]
+numbers = [1,2,3,4,5,6,7,8,9,10]
 
 # 1
 
@@ -108,9 +108,9 @@ p numbers
 
 # 2
 
-numbers = [9,3,10,2,6,1,8,5,7,4]
+numbers = [1,2,3,4,5,6,7,8,9,10]
 
-numbers.collect! do |x|
+numbers.keep_if do |x|
 	x < 5
 end
 
@@ -118,7 +118,21 @@ p numbers
 
 # 3
 
+numbers = [1,2,3,4,5,6,7,8,9,10]
+
+num = numbers.take_while do |x|
+	x < 5
+end
+p num
+
 # 4
+
+numbers = [1,2,3,4,5,6,7,8,9,10]
+
+num = numbers.drop_while do |x|
+	x < 5
+end
+p num
 
 
 # Hash
@@ -134,21 +148,41 @@ numbers = {
 # 1
 
 numbers.delete_if do |word, num|
-	num < 5
+	num < 3
 end
 
 p numbers
 
 # 2
 
-numbers = [9,3,10,2,6,1,8,5,7,4]
+numbers = {
+	one: 1,
+	two: 2,
+	three: 3,
+	four: 4,
+	five: 5,
+}
 
-numbers.collect! do |x|
-	x < 5
+numbers.keep_if do |word, num|
+	num < 3
 end
 
 p numbers
 
 # 3
+
+numbers = {
+	one: 1,
+	two: 2,
+	three: 3,
+	four: 4,
+	five: 5,
+}
+
+numbers.reject! do |word, num|
+	num < 3
+end
+
+p numbers
 
 # 4
