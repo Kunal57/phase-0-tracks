@@ -1,25 +1,19 @@
 # 5.6 Solo Challenge: Manipulating Strings with Iteration
 
-# Attempt a Tricky Algorithm
+# PSEUDOCODE
+# Input: A String
+# Output: A String
+# Steps: Written at the beginning of each step.
 
-=begin
-
-PSEUDOCODE
-Input: A String
-Output: A String
-Steps:
-1. 
-
-=end
 
 # Use a until loop, to repeatedly convert names to alias names until the user quits. Must declare variable answer and wait until it equals 'quit' to exit program.
 
 answer = nil
-alias_array = []
+alias_hash = {}
 until answer == "quit"
 	
-	# Ask User for Real Name
-	puts "Enter a name:"
+	# Ask User for a Name
+	puts "\nEnter a name:"
 	real_name = gets.chomp.downcase
 
 	# Split the name into first and last, put into an array, and reverse the array so that the last name is first and the first name is last, join the two names back into a string, and split them back up into an array of individual letters
@@ -51,15 +45,16 @@ until answer == "quit"
 	alias_name[0].capitalize!
 	alias_name[1].capitalize!
 
-	# Joins together the capitalized words in the array into one full string.
+	# Joins together the capitalized words in the array into one full string. Inserts the real name and alias name into the hash declared at the beginning of the program.
 	alias_name = alias_name.join(" ")
 
-	puts "Your alias name is #{alias_name}! Best of luck on your journey ahead!"
+	alias_hash[real_name] = alias_name
 
-	alias_array = alias_array << alias_name
-
-	puts "\nWould you like to enter another name? If not, enter \"quit\"."
+	puts "\nEnter \"yes\" to input another name or \"quit\" to display your aliases."
 	answer = gets.chomp
 end
 
-p alias_array
+# Iterates over each pair in the alias hash and prints out the real name and alias name for the user to see.
+alias_hash.each do |real_name, alias_name|
+	puts "The alias name for #{real_name} is #{alias_name}!"
+end
