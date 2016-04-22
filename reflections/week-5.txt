@@ -1,0 +1,38 @@
+# Week-5 Review and Reflect
+
+Data Structures
+
+1. Data structures are useful in program because they allow many pieces of data to be stored in an object. A variable has the limitation of storing one value. To store multiple values, we would have to create many different variables or we could simply use a data structure like an array or hash.
+
+Arrays
+
+2. An array is a ruby object that serves as a data structure. Arrays can store multiple values ranging from string, integers, booleans, hashes, and even other arrays. These values are called upon or accessed through the index of the array. Arrays start with a 0 index meaning that the first value point in the array has an index of 0, the second an index of 1, and so on. An array can be created with a number of different techniques. It can be declared as an empty array by setting a variable '= []'. A new array can also be created with the 'Array.new'.
+
+3. Two examples of when to utilize arrays:
+
+- Calculating the leading scorer in the NBA. Each players name would be the variable and the array would be empty at the beginning of the season. After every game, the players points from that game would be inputted into his array. At the end of the season, we would have each players points from all 82 games. We would add up all the data points and divided them by 82 to determine the players average points per game.
+
+- Making lists of books to read and books read. You would have two empty arrays, one labeled books_to_read and the other books_read. Every interesting book that you come across can be inserted into the books_to_read array. After reading the book, the books can be transfered into the books_read array. In this way, you will have a list of potential books that you can begin to read, and all of the books that you already read.
+
+
+Hashes
+
+4. A hash is a another ruby object that serves as a data structure. Hashes store pairs of data, a key and a value. The key must be a string or a symbol, while the value can range from strings, integers, booleans, and even other hashes. Hashes differ from arrays in that they have a key-value pair. This means that instead of accessing data using an index (like an array), values can be accessed using their corresponding key, whether that be a string or symbol. Hashes can be created the same way as arrays. You can create an empty hash with the '{}' or using 'Hash.new()' specifying any default values. Accessing the value is done using the same syntax as an array but instead of putting the index within the brackets, the key must be put in the brackets. Ex: 'nba_player["Kobe Bryant"]'.
+
+5. Two examples of when to utilize hashes:
+
+- Storing the jersey number of NBA players. Since there are a lot of NBA players (about 13 per team & 32 teams), it can be hard to keep track of each players jersey number. We can use hashes to help us keep track. We declare a variable 'player_numbers' equal to a hash. The hash contains a key-value pair for each nba player. The key is a string of the nba players name, such as "Kobe Bryant" and the value is their jersey number, '24'. In this way, when a user needs to access a players jersey number, he can simple call, 'player_numbers["Kobe Bryant"]' to get the value (jersey number) = '24'.
+
+- Storing the total page number of each book. Books come in all different sizes. Some are extremely lengthy and some are very short. To help us keep track of the total page number of books, we can utilize a hash. We can declare a variable called 'books' and set it equal to a list of books with key-value pairings. The keys would be books titles such as "Steve Jobs" while the value would be the total page number, '701'. In this way, when users want to read a book with a total page number condition, we can just iterate through the hash and list all the keys that fit the condition.
+
+Iteration
+
+6. Iteration is useful because it allows programmers to run a block of code for each value in a data structure. As seen above, data structures such as arrays and hashes store many different values. To specifically call each data point using indexes and keys and run code for them would take a long time. Instead, we can use iteration to automatically run a block of code for each data point. In this way, iterating over the data structure with a block of code would result in values that only fit the condition.
+
+7. To build upon our previously defined example of a hash that has key-value pairings of books and total page numbers. Hypothetically, the library inputs each books information, including the book length into their data structure. Different individuals visit the library ranging from small grade school children to sophisticated phd professors. These individuals also are accustomed to reading books of different lengths. Small children want to read books that are less than 50 pages while phd professor want to read books that are over 500 pages. To help filter the list of books in the hash, iteration can be utilized. Iteration would run through each value (book length) within the hash and return only the results that met the condition. For small children, it would return all the books that were shorter than 50 pages and for phd professors it would return all the books that were greater than 500 pages.
+
+Blocks
+
+8. A block in ruby is basically a chunk of code grouped together. A block can be enclosed in either brackets or 'do' & 'end' tags.
+
+9. A block parameter is the variable assigned within the |pipes| of the block. The variable is just a placeholder for the data that the block will be processing and is named by the programmer. The name of the block parameter should be have something to do with each data value that the block will be processing to help improve code readability. The actual arguments/values that will take the parameters place is dictated by the data the block will have to process through.
