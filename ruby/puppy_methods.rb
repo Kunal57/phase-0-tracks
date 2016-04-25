@@ -57,42 +57,43 @@ Thor.eat("Apple")
 
 class NBA_Players
 
-  def initialize
+  def initialize(name)
     puts "Initializing NBA_Players instance ..."
+    @name = name
   end
 
   def dribble(integer)
-    puts "Dribbled #{integer} times towards the basket!"
+    puts "#{@name} dribbles #{integer} times towards the basket!"
   end
 
   def shoot(integer)
-    puts "#{integer} point basket made."
+    puts "#{@name} makes a #{integer} point basket."
   end
 
   def rebound
-    puts "Rebounded the ball."
+    puts "#{@name} rebounds the ball."
   end
 
 end
 
 # DRIVER CODE
 
-kobe_bryant = NBA_Players.new
+# counter = 1
+# names = []
+# until counter == 51
+#   names << "NBA Player" + counter.to_s
+#   counter += 1
+# end
 
-kobe_bryant.dribble(10)
-kobe_bryant.shoot(3)
-kobe_bryant.rebound
+names = ["Lebron James","Steph Curry","Dwayne Wade","Damian Lillard", "Chris Paul",]
 
-counter = 1
-array_of_players = []
-until counter == 51
-  name = NBA_Players.new
-  array_of_players << name
-  counter +=1
+nba_players = []
+names.each do |name|
+  nba_players << NBA_Players.new(name)
 end
 
-array_of_players.each do |player|
-  player.dribble(1)
-  player.shoot(2)
-  player.rebound
+nba_players.each do |name|
+  name.dribble(1)
+  name.shoot(2)
+  name.rebound
 end
