@@ -153,11 +153,11 @@ answer = gets.chomp.downcase
 			puts "What kind of engine does the rocket have?"
 			engine = gets.chomp
 			puts "Does your rocket have relanding capabilities? (yes/no)"
-			relanding = gets.chomp.downcase
+				relanding = gets.chomp.downcase
 				if relanding == "yes"
 					relanding = true
 				else
-					relanding == false
+					relanding = false
 				end
 				rockets << Rocket.new(company, engine, relanding)
 				puts "Would you like to create another rocket? (yes/no)"
@@ -167,14 +167,14 @@ answer = gets.chomp.downcase
 		"That's fine. Maybe tomorrow!"
 	end
 
-if relanding == true
-	reland = "can"
-else
-	reland = "can't"
-end
 
 p rockets
 
 rockets.each do |rocket|
-	puts "The #{company} rocket has a #{engine} engine and #{reland} reland!"
+	# if @relanding == true
+	# 	reland = "can"
+	# else
+	# 	reland = "can't"
+	# end
+	puts "The #{rocket.company} rocket has a #{rocket.engine} engine and #{reland} reland!"
 end
