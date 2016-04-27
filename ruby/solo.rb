@@ -100,43 +100,81 @@ end
 
 # DRIVER CODE
 
-spacex = Rocket.new("SpaceX", "Merlin", true)
+# spacex = Rocket.new("SpaceX", "Merlin", true)
 
-spacex.lift_off
-spacex.landing
-p spacex.fuel
-spacex.refuel(50)
-p spacex.fuel
-spacex.refuel(25)
-p spacex.fuel
-spacex.lift_off
-spacex.refuel(25)
-p spacex.fuel
-spacex.lift_off
-p spacex.fuel
-spacex.deploy("Satellites")
-spacex.landing
-p spacex.company
-p spacex.objective
-spacex.crash
+# spacex.lift_off
+# spacex.landing
+# p spacex.fuel
+# spacex.refuel(50)
+# p spacex.fuel
+# spacex.refuel(25)
+# p spacex.fuel
+# spacex.lift_off
+# spacex.refuel(25)
+# p spacex.fuel
+# spacex.lift_off
+# p spacex.fuel
+# spacex.deploy("Satellites")
+# spacex.landing
+# p spacex.company
+# p spacex.objective
+# spacex.crash
 
-nasa = Rocket.new("NASA", "J-2X", false)
+# nasa = Rocket.new("NASA", "J-2X", false)
 
-nasa.lift_off
-nasa.landing
-p nasa.fuel
-nasa.refuel(50)
-p nasa.fuel
-nasa.refuel(25)
-p nasa.fuel
-nasa.lift_off
-nasa.refuel(25)
-p nasa.fuel
-nasa.lift_off
-p nasa.fuel
-nasa.deploy("Satellites")
-nasa.landing
-p nasa.company
-p nasa.objective
-nasa.crash
-nasa.lift_off
+# nasa.lift_off
+# nasa.landing
+# p nasa.fuel
+# nasa.refuel(50)
+# p nasa.fuel
+# nasa.refuel(25)
+# p nasa.fuel
+# nasa.lift_off
+# nasa.refuel(25)
+# p nasa.fuel
+# nasa.lift_off
+# p nasa.fuel
+# nasa.deploy("Satellites")
+# nasa.landing
+# p nasa.company
+# p nasa.objective
+# nasa.crash
+# nasa.lift_off
+
+
+# Use Your Class in a Program
+rockets = []
+puts "Would you like to launch a rocket today? (yes/no)"
+answer = gets.chomp.downcase
+	if answer == "yes"
+		until answer == "no"
+			puts "What company does the rocket belong to?"
+			company = gets.chomp
+			puts "What kind of engine does the rocket have?"
+			engine = gets.chomp
+			puts "Does your rocket have relanding capabilities? (yes/no)"
+			relanding = gets.chomp.downcase
+				if relanding == "yes"
+					relanding = true
+				else
+					relanding == false
+				end
+				rockets << Rocket.new(company, engine, relanding)
+				puts "Would you like to create another rocket? (yes/no)"
+				answer = gets.chomp.downcase
+			end
+	else
+		"That's fine. Maybe tomorrow!"
+	end
+
+if relanding == true
+	reland = "can"
+else
+	reland = "can't"
+end
+
+p rockets
+
+rockets.each do |rocket|
+	puts "The #{company} rocket has a #{engine} engine and #{reland} reland!"
+end
