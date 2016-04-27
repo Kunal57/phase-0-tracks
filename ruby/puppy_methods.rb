@@ -26,14 +26,12 @@ class Puppy
   end
 
   def dog_years(integer)
-  	dog_years = 0
   	if integer <= 2
   		dog_years = integer * 10.5
   	else
-  		dog_years = 2 * 10.5
-  		dog_years += (integer - 2) * 4
+  		dog_years = ((integer - 2) * 4) + 21
   	end
-  	puts dog_years
+  	dog_years
   end
 
   def eat(food)
@@ -44,13 +42,13 @@ end
 
 # DRIVER CODE
 
-Thor = Puppy.new
+thor = Puppy.new
 
-Thor.fetch("Ball")
-Thor.speak(5)
-Thor.roll_over
-Thor.dog_years(5)
-Thor.eat("Apple")
+thor.fetch("Ball")
+thor.speak(5)
+thor.roll_over
+p thor.dog_years(5)
+thor.eat("Apple")
 
 
 # NBA Players Class
@@ -78,14 +76,14 @@ end
 
 # DRIVER CODE
 
-# counter = 1
-# names = []
-# until counter == 51
-#   names << "NBA Player" + counter.to_s
-#   counter += 1
-# end
+counter = 1
+names = []
+until counter == 51
+  names << "NBA Player" + counter.to_s
+  counter += 1
+end
 
-names = ["Lebron James","Steph Curry","Dwayne Wade","Damian Lillard", "Chris Paul",]
+# names = ["Lebron James","Steph Curry","Dwayne Wade","Damian Lillard", "Chris Paul"]
 
 nba_players = []
 names.each do |name|
