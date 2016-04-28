@@ -164,17 +164,15 @@ answer = gets.chomp.downcase
 				answer = gets.chomp.downcase
 			end
 	else
-		"That's fine. Maybe tomorrow!"
+		puts "That's fine. Maybe tomorrow!"
 	end
 
 
-p rockets
-
 rockets.each do |rocket|
-	# if @relanding == true
-	# 	reland = "can"
-	# else
-	# 	reland = "can't"
-	# end
-	puts "The #{rocket.company} rocket has a #{rocket.engine} engine and #{reland} reland!"
+	if rocket.relanding == true
+		reland = "can"
+	else
+		reland = "can't"
+	end
+	puts "\nThe #{rocket.company} rocket has a #{rocket.engine} engine and #{reland} reland!"
 end
