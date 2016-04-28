@@ -1,23 +1,23 @@
+# 6.6 Mandatory Pairing: Testing a Class with RSpec
+
 class TodoList
+	def initialize(items)
+		@items = items
+	end
 	
-	def initialize(array_of_items)
-		@array_of_items = array_of_items
-	end
-
 	def get_items
-		@array_of_items
-	end
-
-	def get_item(item_index)
-		@array_of_items.fetch(item_index)
+		@items
 	end
 
 	def add_item(item)
-		@array_of_items << item
+		@items << item
 	end
 
-	def delete_item(item)
-		@array_of_items.delete(item)
+	def delete_item(item_to_delete)
+		@items.delete(item_to_delete)
 	end
 
+	def get_item(index)
+		@items[index]
+	end
 end
