@@ -28,31 +28,43 @@ Output: A nicely printed List. (Iteration)
 
 # Initial Solution
 
-def new_list(string)
-	array_of_items = string.split(" ")
-	items_list = Hash.new
+def new_list(string_of_items)
+	array_of_items = string_of_items.split(" ")
+	list = Hash.new
 	array_of_items.each do |item|
-		items_list[item] = 1
+		list[item] = 1
 	end
-	items_list
+	list
 end
 
-def add_item(items_list, item, quantity=1)
-	items_list[item] = quantity
+def add_item(list, item, quantity=1)
+	list[item] = quantity
 end
 
-def remove_item(item)
-
+def remove_item(list, item)
+	list.delete(item)
 end
 
-def update_item(item, quantity)
+def update_item(list, item, quantity)
+	list[item] = quantity
 end
 
-def print_list
+def print_list(list)
+	puts "List:"
+	list.each do |item, quantity|
+		puts "#{item}: #{quantity}"
+	end
 end
 
 
 # DRIVER CODE
 
-new_list("Apple Banana Orange Strawberry Juice Milk Cookie Bread")
-add_item(items_list,"Kiwi",2)
+grocery_list = new_list("Apples Bananas Oranges Strawberries Juice Cheese Bread Lettuce Milk Cereal Cookies")
+add_item(grocery_list, "nuts", 2)
+remove_item(grocery_list, "Cookies")
+remove_item(grocery_list, "Cheese")
+remove_item(grocery_list, "Apples")
+update_item(grocery_list, "Oranges",15)
+update_item(grocery_list, "Juice",2)
+update_item(grocery_list, "Strawberries",3)
+print_list(grocery_list)
