@@ -1,0 +1,18 @@
+#octopus {
+	display: block;
+	width: 300px;
+	margin: 360px;
+	margin-top: 150px;
+}
+
+#hat {
+	position: absolute;
+	top: 60px;
+	left: 400px;
+}
+
+#glasses {
+	position: absolute;
+	top: 312px;
+	left: 456px;
+}
