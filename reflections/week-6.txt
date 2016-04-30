@@ -1,0 +1,19 @@
+# Week-6 Review and Reflect
+
+1. What are classes? Be sure to define the following terms in your explanation and describe the relationships between them:
+
+class
+state
+behavior
+instance variable
+instance method
+
+2. What are attributes?
+
+3. Give an example of a real world object, and describe how you might assign its attributes if you were to design a class to represent that object.
+
+4. What is the purpose of the initialize method? When does it run?
+
+5. What are modules?
+
+6. What are the different ways you can use a module?
