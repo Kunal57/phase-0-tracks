@@ -2,18 +2,43 @@
 
 1. What are classes? Be sure to define the following terms in your explanation and describe the relationships between them:
 
-class
-state
-behavior
-instance variable
-instance method
+Classes in Ruby are first-class objects. They are 'first-class' objects because they can be used to create other objects (since everything in ruby is an object) that share similar states and behaviors. For example, when a developer find a method that he would like to run on multiple objects without making different if/else statements, he can utilize a class. By using a class, the state of an object can be defined in the initialization and then behaviors (methods) can be defined within the class. In this way, multiple instances of the class can be created that share similar characteristics and methods. With the creation of a class, developers can input parameters that take variables which can be initialized within the the class. These variables can then be used throughout the class in various methods. Instance methods are the methods that can be called on an instance of a class. For example, if you create a new class and define a 'length' method within the class, that 'length' method can be later called on an instance of the class. In this way, Classes are essential in ruby for organizing information, preventing repetition, and saving developers a lot of time.
+
+class - a blueprint from which individual objects are created.
+state - characteristics, or data, or each instance. The state can also be thought of as the attributes of a object.
+behavior - code that manipulates or processes the state data.
+instance variable - variables that can be initialized when an instance of a class is created and can be called upon throughout the class. Instance variables begin with the '@' key.
+instance method - methods that are called on an instance of a class. 
 
 2. What are attributes?
 
+Attributes are a special sort of variable that can be used inside of a class declaration. Each instance has its own independent set of attribute data. This is important as each instance has a defined list of attributes but the data for each attribute varies from instance to instance. For example, a Human class has attributes for eye color, skin color, and hair color but each instance would be comprised of different colors depending on the data of the specific instance.
+
 3. Give an example of a real world object, and describe how you might assign its attributes if you were to design a class to represent that object.
+
+If I were to create a class for NBA_Player, the following pieces of data would be attributes:
+
+- name
+- team
+- number
+- position
+
+These attributes are required for each instance of the NBA_player class as each player would have a different name, team, number, and position.
 
 4. What is the purpose of the initialize method? When does it run?
 
+Creating a new instance of a class by using the .new method creates a new instance of the object and also calls the object's initialize method. The object's initialize method receives the arguments and initializes the state of the object. For example, a Person class that delivers a name and age as arguments to the initialize method will assign them to instance variables. The initialize method is the first method that runs when the instance of the class is first created.
+
 5. What are modules?
 
+Modules are a way of grouping together methods, classes, and constants. They have two main benefits:
+- Modules provide a namespace and prevent name clashes.
+- Modules implement the mixin facility.
+
 6. What are the different ways you can use a module?
+
+Namespaces
+Modules provide compartmentalization for methods. This process is similar to the process of organizing files into folders in order to group them together. This is useful as it prevents methods from cluttering and decreases the chances of a programmer accidentally modifying the method of another programmer The call couple basically be SomeModule.some_method instead of the usual method call of some_method.
+
+Mixins
+Mixins are like an extension pack that can be used in multiple classes. They give the class more functionality and reduce the necessity to repeat code. For example, a Rocket and Plane class would use the Liftoff module for basic flight. Instead of defining similar methods in each class, the Liftoff module can be used in each class for take-off functionality.
