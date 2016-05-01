@@ -1,0 +1,28 @@
+#contact-info {
+	font-size: .8em;
+}
+
+.job {
+	background-color: #e9e5dc;
+}
+
+.accomplishments {
+	font-size: .8em;
+}
+
+a:link {
+	color: grey;
+}
+
+a:visited {
+	color: grey;
+}
+
+a:hover {
+	color: black;
+}
+
+ul > li {
+	font-weight: lighter;
+	text-decoration: underline;
+}
