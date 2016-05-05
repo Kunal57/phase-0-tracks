@@ -141,7 +141,7 @@ function generateData(integer){
 
 // DRIVER CODE
 
-times = 1
+times = 10
 for (var a = 0; a < times; a++) {
 	var numb = Math.floor((Math.random()*10)+2)
 	var newArray = generateData(numb)
