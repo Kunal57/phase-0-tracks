@@ -45,33 +45,51 @@ PSEUDOCODE
 Input: Two Objects.
 Output: Boolean.
 Steps:
-1. Define a function named 'share_key_value' that takes in two objects as parameters.
-2. Loop through the first key value of the first object.
-3. Within that loop, create another loop that loops through each key on the second object.
-4. Check if the first key from the first obejct matches any of the keys from the second object, if so, check to see if the values match.
-5. If the values match, return true or else proceed on with the rest of the loop.
-6. Either the loop will find a key-value pair that matches, or it will return false after the completition of the loop.
-7. End the loops and function.
+1. Define a function 'shareKeyValues' that takes two objects as paramters.
+2.  Create a var called 'obj1Keys' to store the keys of object1.
+3. Create a var called obj2Keys to store the keys of object2.
+4. Loop through object1 and push the keys into the obj1Keys array.
+5. Loop through object2 and push the keys into the obj2Keys array.
+6. Use a for loop to loop through the obj1Keys array.
+7. Loop through the obj2Keys array within the obj1Keys loop and see if any keys equal any obj1Keys array keys.
+8. If the keys are equal, see if the values of the key are equal. If so, return true, else return false.
+9. Close out of the loops and return an answer.  
+
 **/
 
-function shareKeyValues (object1,object2){
-	var objKeys1 = [];
-	var objKeys2 = [];
-	for(var key in object1) {
-		objKeys1.push(key)
+function shareKeyValues(object1,object2){
+	// Create two variables to hold the keys of each object
+	var obj1Keys = [];
+	var obj2Keys = [];
+	// Set variable equal to false. Will return false unless a key-value pair match in which case it will change to true
+	var share = false;
+	// Push all of the keys of each object into arrays
+	for (var key1 in object1) {
+		obj1Keys.push(key1)
+	} 
+	for (var key2 in object2) {
+		obj2Keys.push(key2)
 	}
-	for(var key in object2){
-		objKeys2.push(key)
+	// Loop through the first object and for each key...
+	for (var i = 0; i < obj1Keys.length; i++) {
+		// For each key, loop through the keys of the second object...
+		for (var x = 0; x < obj2Keys.length; x++) {
+			// If any of the keys match, check the values of each key
+			if (obj1Keys[i] == obj2Keys[x]) {
+				// If the values also match, change the share variable to true, else let it remain false
+				if (object1[obj1Keys[i]] == object2[obj2Keys[x]]) {
+					share = true;
+				}
+			}
+		}
 	}
-	for(var i = 0; i < objKeys1.length;i++){
-		objKeys1[i]
-	}
-	return objKeys1
-	return objKeys2
+	// Return share value at the end
+	return share;
 }
 
-var object1 = {name: "Elon", company: "SpaceX", industry: "Tech"};
-var object2 = {name: "Steve", company: "Apple", industry: "Tech"};
+
+var object1 = {firstName: "Elon", company: "SpaceX", industry: "Tech"};
+var object2 = {lastName: "Steve", company: "Apple", industry: "Tech"};
 
 console.log(shareKeyValues(object1,object2))
 
@@ -123,7 +141,7 @@ function generateData(integer){
 
 // DRIVER CODE
 
-times = 10
+times = 1
 for (var a = 0; a < times; a++) {
 	var numb = Math.floor((Math.random()*10)+2)
 	var newArray = generateData(numb)
