@@ -1,0 +1,122 @@
+1. Display the information in one table (either table is fine).
+
+Input:
+SELECT * FROM companies;
+
+Output:
+company_id  company_name  company_industry  company_value  ceo_id
+----------  ------------  ----------------  -------------  ----------
+1           SpaceX        Aerospace         10000000000    1
+2           Tesla         Auto Manufacture  10000000000    1
+3           Apple         Consumer Electro  750000000000   2
+4           Pixar         Motion Pictures   20000000000    2
+5           Twitter       Internet          20000000000    3
+6           Square        Financial Servic  5000000000     3
+7           Amazon        Internet          230000000000   4
+8           Blue Origin   Aerospace         1000000000     4
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+Input:
+UPDATE companies SET company_value=12000000000 WHERE company_name="SpaceX";
+SELECT * FROM companies;
+
+Output:
+company_id  company_name  company_industry  company_value  ceo_id
+----------  ------------  ----------------  -------------  ----------
+1           SpaceX        Aerospace         12000000000    1
+2           Tesla         Auto Manufacture  10000000000    1
+3           Apple         Consumer Electro  750000000000   2
+4           Pixar         Motion Pictures   20000000000    2
+5           Twitter       Internet          20000000000    3
+6           Square        Financial Servic  5000000000     3
+7           Amazon        Internet          230000000000   4
+8           Blue Origin   Aerospace         1000000000     4
+
+3. Display the information in both tables using one query.
+
+Input:
+SELECT * FROM companies, ceos WHERE companies.ceo_id = ceos.ceo_id;
+
+Output:
+company_id  company_name  company_industry  company_value  ceo_id      ceo_id      ceo_name    ceo_alive
+----------  ------------  ----------------  -------------  ----------  ----------  ----------  ----------
+1           SpaceX        Aerospace         12000000000    1           1           Elon Musk   1
+2           Tesla         Auto Manufacture  10000000000    1           1           Elon Musk   1
+3           Apple         Consumer Electro  750000000000   2           2           Steve Jobs  0
+4           Pixar         Motion Pictures   20000000000    2           2           Steve Jobs  0
+5           Twitter       Internet          20000000000    3           3           Jack Dorse  1
+6           Square        Financial Servic  5000000000     3           3           Jack Dorse  1
+7           Amazon        Internet          230000000000   4           4           Jeff Bezos  1
+8           Blue Origin   Aerospace         1000000000     4           4           Jeff Bezos  1
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+Input:
+SELECT companies.company_name, ceos.ceo_name FROM companies, ceos WHERE companies.ceo_id = ceos.ceo_id;
+
+Output:
+company_name  ceo_name
+------------  ----------
+SpaceX        Elon Musk
+Tesla         Elon Musk
+Apple         Steve Jobs
+Pixar         Steve Jobs
+Twitter       Jack Dorse
+Square        Jack Dorse
+Amazon        Jeff Bezos
+Blue Origin   Jeff Bezos
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+Input:
+DELETE FROM companies WHERE company_name="Blue Origin";
+SELECT * FROM companies;
+
+Output:
+company_id  company_name  company_industry  company_value  ceo_id
+----------  ------------  ----------------  -------------  ----------
+1           SpaceX        Aerospace         12000000000    1
+2           Tesla         Auto Manufacture  10000000000    1
+3           Apple         Consumer Electro  750000000000   2
+4           Pixar         Motion Pictures   20000000000    2
+5           Twitter       Internet          20000000000    3
+6           Square        Financial Servic  5000000000     3
+7           Amazon        Internet          230000000000   4
+
+6. JOINS
+
+Input:
+SELECT ceos.ceo_name, companies.company_name
+FROM ceos
+INNER JOIN companies
+ON ceos.ceo_id = companies.ceo_id;
+
+Output:
+ceo_name    company_name
+----------  ------------
+Elon Musk   SpaceX
+Elon Musk   Tesla
+Steve Jobs  Apple
+Steve Jobs  Pixar
+Jack Dorse  Twitter
+Jack Dorse  Square
+Jeff Bezos  Amazon
+
+Input:
+SELECT ceos.ceo_name, companies.company_industry
+FROM ceos
+LEFT JOIN  companies
+ON ceos.ceo_id = companies.ceo_id;
+
+Output:
+ceo_name    company_industry
+----------  ----------------
+Elon Musk   Aerospace
+Elon Musk   Auto Manufacture
+Steve Jobs  Consumer Electro
+Steve Jobs  Motion Pictures
+Jack Dorse  Financial Servic
+Jack Dorse  Internet
+Jeff Bezos  Internet
+
