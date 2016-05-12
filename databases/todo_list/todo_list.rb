@@ -60,7 +60,6 @@ class ToDo_List
 	def complete_task(database, task)
 		completed = @tasks.delete(task)
 		database.execute("DELETE FROM todos WHERE task=(?)", [task])
-		puts "You have completed the task: #{completed}"
 	end
 
 	def view_list(database)
@@ -102,6 +101,7 @@ if response.downcase == "new"
 		elsif answer.downcase == "remove task"
 			puts "\nEnter any tasks that have been completed. Enter 'Done' after you've entered all completed tasks."
 			loop do
+				puts "Task to Remove:"
 				answer = gets.chomp
 				break if answer.downcase == "done"
 				title.complete_task(db, answer)
@@ -119,48 +119,58 @@ end
 
 if response.downcase == "old"
 	puts "\nWhat is the title of your old list?"
+
+	puts "\nSelect the List:"
+	old_list = db.execute("SELECT lists.title FROM lists")
+	old_list.each do |title|
+		title.each do |t|
+			puts "#{t}"
+		end
+	end
+
 	title = gets.chomp
 
 	list = db.execute("SELECT todos.task FROM todos JOIN lists ON todos.list_id = lists.id WHERE title=(?);",[title])
-	
-
-
-
-		counter = 1
-		list = list.flatten
-		while list.length > (counter - 1)
-			puts "#{counter}. #{list[counter - 1]}"
-			counter +=1
-		end
-
-
-
 
 	answer = ""
 	until answer.downcase == "quit"
-		puts "\nWhat would you like to do?\n1. Add Task\n2. Remove Task\n3. View List\n4. Quit"
+		puts "\nWhat would you like to do?\n1. Add Task\n2. Mark Task Complete\n3. View List\n4. Delete List\n5. Quit"
 		answer = gets.chomp
 		if answer.downcase == "add task"
 			puts "\nPlease enter tasks one-by-one below. Hit 'Enter' after each task & 'Done' after you are finished entering all of your tasks."
 			loop do
 				puts "Task to Add:"
 				answer = gets.chomp
+				list_id = db.execute("SELECT lists.id FROM lists WHERE title=(?)",[title])
 				break if answer.downcase == "done"
-				title.add_task(db, answer)
+				db.execute("INSERT INTO todos (task, list_id) VALUES (?,?)",[answer,list_id])
 			end
-		elsif answer.downcase == "remove task"
+		elsif answer.downcase == "mark task complete"
 			puts "\nEnter any tasks that have been completed. Enter 'Done' after you've entered all completed tasks."
 			loop do
+				puts "Task Completed:"
 				answer = gets.chomp
 				break if answer.downcase == "done"
-				title.complete_task(db, answer)
+				db.execute("DELETE FROM todos WHERE task=(?)",[answer])
 			end
 		elsif answer.downcase == "view list"
-			# title.view_list(db)
+			list = db.execute("SELECT todos.task FROM todos JOIN lists ON todos.list_id = lists.id WHERE title=(?);",[title])
+			puts "\n#{title} - Tasks to Complete:" 
+			counter = 1
+			list = list.flatten
+			while list.length > (counter - 1)
+				puts "#{counter}. #{list[counter - 1]}"
+				counter +=1
+			end
+		elsif answer.downcase == "delete list"
+			list_id = db.execute("SELECT lists.id FROM lists WHERE title=(?)",[title])
+			db.execute("DELETE FROM todos WHERE list_id=(?)",[list_id])
+			db.execute("DELETE FROM lists WHERE title=(?)",[title])
+			answer = "quit"
 		elsif answer.downcase == "quit"
 			break
 		else
-			puts "\nNot a valid input. Please select either\n1. Add Task\n2. Remove Task\n3. View List\n4. Quit"
+			puts "\nNot a valid input. Please select either:\n1. Add Task\n2. Mark Task Complete\n3. View List\n4. Delete List\n5. Quit"
 			answer = gets.chomp
 		end
 	end

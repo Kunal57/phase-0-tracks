@@ -45,7 +45,7 @@ end
 end
 
 
-# puppies = db.execute("SELECT * FROM puppies;")
-# puppies.each do |puppy|
-# 	puts "#{puppy['name']} is #{puppy['age']}"
-# end
+puppies = db.execute("SELECT * FROM puppies;")
+puppies.each do |puppy|
+	puts "#{puppy['name']} is #{puppy['age']}"
+end
