@@ -69,12 +69,13 @@ class Schedule
 									"12:00AM" => "Sleep",
 								}
 		@hours = ["1:00AM","2:00AM","3:00AM","4:00AM","5:00AM","6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM","1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","12:00AM","1:00AM","2:00AM","3:00AM","4:00AM","5:00AM","6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM","1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","12:00AM"]
-		
-		database.execute("INSERT INTO schedules (day, '1:00AM', '2:00AM', '3:00AM', '4:00AM', '5:00AM', '6:00AM', '7:00AM', '8:00AM', '9:00AM', '10:00AM', '11:00AM', '12:00PM', '1:00PM', '2:00PM', '3:00PM', '4:00PM', '5:00PM', '6:00PM', '7:00PM', '8:00PM', '9:00PM', '10:00PM', '11:00PM', '12:00AM') VALUES (?,'Sleep','Sleep','Sleep','Sleep','Wake/Read','Sit-ups/Shower','Medidate/Puja/Breakfast','Plan the Day/Read','Code','Code','Code','Code','Lunch','Exercise','Code','Code','Code','Code','Dinner','Brush/Examine the Day','Read/Social Media','Sleep','Sleep','Sleep')", [date])
+	
+		database.execute("INSERT INTO schedules (day, '1:00AM', '2:00AM', '3:00AM', '4:00AM', '5:00AM', '6:00AM', '7:00AM', '8:00AM', '9:00AM', '10:00AM', '11:00AM', '12:00PM', '1:00PM', '2:00PM', '3:00PM', '4:00PM', '5:00PM', '6:00PM', '7:00PM', '8:00PM', '9:00PM', '10:00PM', '11:00PM', '12:00AM') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [@date,@schedule['1:00AM'],@schedule['2:00AM'],@schedule['3:00AM'],@schedule['4:00AM'],@schedule['5:00AM'],@schedule['6:00AM'],@schedule['7:00AM'],@schedule['8:00AM'],@schedule['9:00AM'],@schedule['10:00AM'],@schedule['11:00AM'],@schedule['12:00PM'],@schedule['1:00PM'],@schedule['2:00PM'],@schedule['3:00PM'],@schedule['4:00PM'],@schedule['5:00PM'],@schedule['6:00PM'],@schedule['7:00PM'],@schedule['8:00PM'],@schedule['9:00PM'],@schedule['10:00PM'],@schedule['11:00PM'],@schedule['12:00AM']])
 	end
 
-	def update(time, new_task)
+	def update(database, time, new_task)
 		@schedule[time] = new_task
+		database.execute("UPDATE schedules SET '#{time}' = '#{new_task}' WHERE day = (?)",[@date])
 	end
 
 	def view
@@ -84,56 +85,33 @@ class Schedule
 		end
 	end
 
-	def sleep(time)
+	def sleep(database, time)
 		sleep_index = @hours.index(time)
 		counter = 1
 		while counter < 8
 		@schedule[@hours[sleep_index]] = "Sleep"
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index]}' = 'Sleep' WHERE day = (?)",[@date])
 		sleep_index += 1
 		counter += 1
 		end
 	end
 
-	def wake(time)
+	def wake(database, time)
 		sleep_index = @hours.index(time)
 		@schedule[@hours[sleep_index]] = "Wake/Read"
 		@schedule[@hours[sleep_index + 1]] = "Situps/Shower"
 		@schedule[@hours[sleep_index + 2]] = "Meditate/Puja/Breakfast"
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index]}' = 'Wake/Read' WHERE day = (?)",[@date])
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index + 1]}' = 'Situps/Shower' WHERE day = (?)",[@date])
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index + 2]}' = 'Meditate/Puja/Breakfast' WHERE day = (?)",[@date])
 	end
 
-	def bed(time)
+	def bed(database, time)
 		sleep_index = @hours.index(time)
 		@schedule[@hours[sleep_index]] = "Brush/Examine the Day"
 		@schedule[@hours[sleep_index + 1]] = "Read/Social Media"
-	end
-
-	def default
-		@schedule = {
-									"1:00AM" => "Sleep",
-									"2:00AM" => "Sleep",
-									"3:00AM" => "Sleep",
-									"4:00AM" => "Sleep",
-									"5:00AM" => "Wake/Read",
-									"6:00AM" => "Sit-ups/Shower",
-									"7:00AM" => "Medidate/Puja/Breakfast",
-									"8:00AM" => "Plan the Day/Read",
-									"9:00AM" => "Code",
-									"10:00AM" => "Code",
-									"11:00AM" => "Code",
-									"12:00PM" => "Code",
-									"1:00PM" => "Lunch",
-									"2:00PM" => "Exercise",
-									"3:00PM" => "Code",
-									"4:00PM" => "Code",
-									"5:00PM" => "Code",
-									"6:00PM" => "Code",
-									"7:00PM" => "Dinner",
-									"8:00PM" => "Brush/Examine the Day",
-									"9:00PM" => "Read/Social Media",
-									"10:00PM" => "Sleep",
-									"11:00PM" => "Sleep",
-									"12:00AM" => "Sleep",
-								}
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index]}' = 'Brush/Examine the Day' WHERE day = (?)",[@date])
+		database.execute("UPDATE schedules SET '#{@hours[sleep_index + 1]}' = 'Read/Social Media' WHERE day = (?)",[@date])
 	end
 
 end
@@ -193,6 +171,7 @@ def view_existing_list(database, date)
 	puts "12:00AM - #{time12AM[0][0]}"
 end
 
+hours = ["1:00AM","2:00AM","3:00AM","4:00AM","5:00AM","6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM","1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","12:00AM","1:00AM","2:00AM","3:00AM","4:00AM","5:00AM","6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM","1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","12:00AM"]
 
 puts "Create New Schedule ('N') or Select Existing Schedule ('E')"
 list = gets.chomp
@@ -205,7 +184,7 @@ if list.downcase == "n"
 	# NEW SCHEDULES
 	action = ""
 	until action.downcase == 'q'
-	puts "\n1. View List (V)\n2. Update List (U)\n3. Morning Routine (W)\n4. Prepare for Bed (B) \n5. 7 Hours of Sleep (S) \n6. Set List to Default (D) \n7. Quit (Q)"
+	puts "\n1. View List (V)\n2. Update List (U)\n3. Morning Routine (W)\n4. Prepare for Bed (B) \n5. 7 Hours of Sleep (S) \n6. Quit (Q)"
 	action = gets.chomp
 		if action.downcase == "v"
 			schedule.view
@@ -214,22 +193,19 @@ if list.downcase == "n"
 			time = gets.chomp
 			puts "Update Task:"
 			new_task = gets.chomp
-			schedule.update(time, new_task)
+			schedule.update(db, time, new_task)
 		elsif action.downcase == "w"
 			puts "\nWake Up Time:"
 			wake_time = gets.chomp
-			schedule.wake(wake_time)
+			schedule.wake(db, wake_time)
 		elsif action.downcase == "b"
 			puts "\nPrepare for Sleep Time:"
 			bed = gets.chomp
-			schedule.bed(bed)
+			schedule.bed(db, bed)
 		elsif action.downcase == "s"
 			puts "\nSleep Time:"
 			sleep = gets.chomp
-			schedule.sleep(sleep)
-		elsif action.downcase == "d"
-			schedule.default
-			puts "List successfully set to default."
+			schedule.sleep(db, sleep)
 		elsif action.downcase == "q"
 			break
 		else
@@ -247,7 +223,7 @@ elsif list.downcase == "e"
 
 	action = ""
 		until action.downcase == 'q'
-		puts "\n1. View List (V)\n2. Update List (U)\n3. Morning Routine (W)\n4. Prepare for Bed (B) \n5. 7 Hours of Sleep (S) \n6. Set List to Default (D) \n7. Quit (Q)"
+		puts "\n1. View List (V)\n2. Update List (U)\n3. Morning Routine (W)\n4. Prepare for Bed (B) \n5. 7 Hours of Sleep (S) \n6. Quit (Q)"
 		action = gets.chomp
 			if action.downcase == "v"
 				view_existing_list(db, date)
@@ -256,22 +232,31 @@ elsif list.downcase == "e"
 				time = gets.chomp
 				puts "Update Task:"
 				new_task = gets.chomp
-				schedule.update(time, new_task)
+					db.execute("UPDATE schedules SET '#{time}' = '#{new_task}' WHERE day = (?)",[date])
 			elsif action.downcase == "w"
 				puts "\nWake Up Time:"
 				wake_time = gets.chomp
-				schedule.wake(wake_time)
+				sleep_index = hours.index(wake_time)
+					db.execute("UPDATE schedules SET '#{hours[sleep_index]}' = 'Wake/Read' WHERE day = (?)",[date])
+					db.execute("UPDATE schedules SET '#{hours[sleep_index + 1]}' = 'Situps/Shower' WHERE day = (?)",[date])
+					db.execute("UPDATE schedules SET '#{hours[sleep_index + 2]}' = 'Meditate/Puja/Breakfast' WHERE day = (?)",[date])
 			elsif action.downcase == "b"
 				puts "\nPrepare for Sleep Time:"
 				bed = gets.chomp
-				schedule.bed(bed)
+					sleep_index = hours.index(bed)
+					db.execute("UPDATE schedules SET '#{hours[sleep_index]}' = 'Brush/Examine the Day' WHERE day = (?)",[date])
+					db.execute("UPDATE schedules SET '#{hours[sleep_index + 1]}' = 'Read/Social Media' WHERE day = (?)",[date])
 			elsif action.downcase == "s"
 				puts "\nSleep Time:"
 				sleep = gets.chomp
-				schedule.sleep(sleep)
-			elsif action.downcase == "d"
-				schedule.default
-				puts "List successfully set to default."
+					sleep_index = hours.index(sleep)
+					counter = 1
+					while counter < 8
+						db.execute("UPDATE schedules SET '#{hours[sleep_index]}' = 'Sleep' WHERE day = (?)",[date])
+						
+						sleep_index += 1
+						counter += 1
+					end
 			elsif action.downcase == "q"
 				break
 			else
