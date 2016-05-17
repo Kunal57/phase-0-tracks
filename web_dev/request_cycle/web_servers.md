@@ -31,4 +31,4 @@
 
 - Every hacker & virus knows the importance of a root account. If they are planning to attack your system, it is a known point of entry, and a likely target. This is why root accounts should have logins disabled.
 
-- There is only one root account. As a result, if everyone uses it, it's difficult to find out who did what to the system. 
+- There is only one root account. As a result, if everyone uses it, it's difficult to find out who did what to the system.  
