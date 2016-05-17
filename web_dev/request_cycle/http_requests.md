@@ -53,7 +53,7 @@
 	505 - HTTP Version Not Supported
 
 
-## 5 Common HTTP Errors
+#### 5 Common HTTP Errors
 
 - HTTP ERROR 401 (Unauthorized)
 	Error occurs when a website visitor tries to access a restricted web page but isn't authorized to do so, usually because of a failed login attempt.
