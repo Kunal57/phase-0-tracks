@@ -13,7 +13,7 @@
 
 - A VPS is basically a whole new computer accessed via your original computer. The new virtual machine has similar functionality and privacy as a normal computer and each can run its own operating system. A VPS doesn't have a physical form but is instead accessed through another physically present computer.
 
-## Advantages
+#### Advantages
 
 - More stability and reliability for basic web hosting needs
 
