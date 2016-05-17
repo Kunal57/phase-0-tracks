@@ -1,6 +1,6 @@
 # View HTTP Requests
 
-1. What are some common HTTP status codes?
+### What are some common HTTP status codes?
 
 - Informational
 	100 - Continue
@@ -53,7 +53,7 @@
 	505 - HTTP Version Not Supported
 
 
-5 Common HTTP Errors
+## 5 Common HTTP Errors
 
 - HTTP ERROR 401 (Unauthorized)
 	Error occurs when a website visitor tries to access a restricted web page but isn't authorized to do so, usually because of a failed login attempt.
@@ -71,12 +71,12 @@
 	Error occurs when the web server encounters some form of internal error. For example, the web server could be overloaded and therefore unable to handle requests properly.
 
 
-2. What is the difference between a GET request and a POST request? When might each be used?
+### What is the difference between a GET request and a POST request? When might each be used?
 
 - GET : Used to retrieve remote data.
 - POST : Used to insert/update remote data.
 
-3. What is a cookie? How does it relate to HTTP requests?
+### What is a cookie? How does it relate to HTTP requests?
 
 - A HTTP cookie is a small piece of data sent from a website and stored in the user's web browser while the user is browsing. 
 
