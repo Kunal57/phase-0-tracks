@@ -1,0 +1,27 @@
+html, body {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 35px;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #BEBFB4;
+	text-decoration: none;
+}
+
+main {
+	text-align: center;
+	margin: 20%;
+}
