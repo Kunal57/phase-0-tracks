@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Student Management System</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<h1>Student Management System</h1>
+	<p>Welcome to the Student Management System.</p>
+	<p>Click <a href="students/new">here</a> to create a new student.</p>
+	<ul>
+		<% @students.each do |student| %>
+			<li><%= student['name'] %>, <%= student['age'] %></li>
+		<% end %>
+	</ul>
+	<p><a href="/delete_student">Delete Student</a></p>
+</body>
+</html>
